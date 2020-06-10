@@ -1,0 +1,16 @@
+<!--
+ * @Author: alphapenng
+ * @Date: 2020-06-10 14:48:40
+ * @LastEditors: alphapenng
+ * @LastEditTime: 2020-06-10 14:52:34
+ * @Description: 
+--> 
+{% extends 'base.html' %}
+{% block content %}
+<h3>Edit item</h3>
+<form method="POST">
+  Name <input type="text" name="title" autocomplete="off" required value="{{ movie.title }}">
+  Year <input type="text" name="year" autocomplete="off" required value="{{ movie.year }}">
+  <input class="btn" type="submit" name="submit" value="Update">
+</form>
+{% endblock %}

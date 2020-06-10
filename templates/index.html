@@ -2,16 +2,25 @@
  * @Author: alphapenng
  * @Date: 2020-06-05 09:23:46
  * @LastEditors: alphapenng
- * @LastEditTime: 2020-06-10 09:46:01
+ * @LastEditTime: 2020-06-10 15:11:29
  * @Description: 
 --> 
 {% extends 'base.html' %}
 {% block content %}
 <p>{{ movies|length }} Titles</p>
+<form method="POST">
+  Name <input type="text" name="title" autocomplete="off" required>
+  Year <input type="text" name="year" autocomplete="off" required>
+  <input class="btn" type="submit" name="submit" value="Add">
+</form>
 <ul class="movie-list">
   {% for movie in movies %}
   <li>{{ movie.title }} - {{ movie.year }}
     <span class="float-right">
+      <form class="inline-form" method="POST" action="{{ url_for('delete', movie_id=movie.id) }}">
+        <input class="btn" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure?')">
+      </form>
+      <a class="btn" href="{{ url_for('edit', movie_id=movie.id) }}">Edit</a>
       <a class="imdb" href="https://www.imdb.com/find?q={{ movie.title }}" target="_blank" title="Find this movie on IMDb">IMDb</a>
     </span>
   </li>
