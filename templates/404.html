@@ -1,0 +1,18 @@
+<!--
+ * @Author: alphapenng
+ * @Date: 2020-06-10 08:41:53
+ * @LastEditors: alphapenng
+ * @LastEditTime: 2020-06-10 09:51:01
+ * @Description: 
+--> 
+{% extends 'base.html' %}
+{% block content %}
+<ul class="movie-list">
+  <li>
+    Page Not Found - 404
+    <span class="float-right">
+      <a href="{{ url_for('index') }}">Go Back</a>
+    </span>
+  </li>
+</ul>
+{% endblock %}
