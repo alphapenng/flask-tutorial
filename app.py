@@ -2,7 +2,7 @@
 @Author: alphapenng
 @Date: 2020-06-04 16:11:13
 @LastEditors: alphapenng
-@LastEditTime: 2020-06-11 09:31:47
+@LastEditTime: 2020-06-11 16:51:34
 @Description: 
 '''
 import os
@@ -24,6 +24,7 @@ else:
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = prefix + os.path.join(app.root_path, 'data.db')
 app.config['SECRET_KEY'] = 'dev'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
@@ -175,7 +176,7 @@ def edit(movie_id):
         movie.title = title
         movie.year = year
         db.session.commit()
-        flash('Item Updated.')
+        flash('Item updated.')
         return redirect(url_for('index'))
     return render_template('edit.html', movie=movie)
 
